@@ -5,7 +5,15 @@ class Button {
         this.name = name;
         this.buttonWidth = 80;
         this.buttonHeight = 40;
-        this.bg = color(255);
+        this.bg = color(0, 200, 200);
+        this.clicked = false;
+    }
+
+    show() {
+        rectMode(CENTER);
+        this.bg = color(0, 200, 200);
+        fill(this.bg);
+        rect(this.x, this.y, this.buttonWidth, this.buttonHeight, 10);
     }
 
     checkMouse() {
@@ -16,13 +24,7 @@ class Button {
             mouseY < this.y + this.buttonHeight / 2
         ) {
             console.log(this.name);
-            this.bg = color(0, 200, 200);
+            this.clicked = true;
         }
-    }
-
-    show() {
-        rectMode(CENTER);
-        fill(this.bg);
-        rect(this.x, this.y, this.buttonWidth, this.buttonHeight);
     }
 }
