@@ -1,27 +1,35 @@
 class LoadingBar {
-    constructor(x, y, width, height) {
+    constructor(x, y, w, h) {
         this.x = x;
         this.y = y;
-        this.width = width;
-        this.height = height;
-        this.fillWidth = 0;
+        this.w = w;
+        this.h = h;
+        this.fillW = 0;
         this.fillColor = color(0, 200, 0);
-        this.lastCounter = 0;
     }
 
     show() {
         noStroke();
         fill(150);
-        rect(this.x, this.y, this.width, this.height);
+        rectMode(CORNER);
+        rect(this.x, this.y, this.w, this.h);
         fill(this.fillColor);
-        rect(this.x, this.y, this.fillWidth, this.height);
+        rect(this.x, this.y, this.fillW, this.h);
     }
 
     fillProgress() {
-        if (this.fillWidth < this.width) {
-            if (strengthCounter > this.lastCounter) {
-                this.fillWidth = map(strengthCounter, 0, 100, 0, this.width);
-                this.lastCounter = strengthCounter;
+        if (this.fillW < this.w) {
+            this.fillW = map(strengthCounter, 0, 100, 0, this.w);
+        }
+    }
+
+    entrophy() {
+        if (this.fillW > 0) {
+            this.fillW -= 0.5;
+            if (this.fillW < 0) {
+                this.fillW = 0;
+            }
+            if (this.fillW == this.w) {
             }
         }
     }
